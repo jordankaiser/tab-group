@@ -136,8 +136,8 @@ window.addEventListener('load', function () {
   const viewportNode = rootNode.querySelector('.embla__viewport')
 
   // Grab button nodes
-  const prevButtonNode = rootNode.querySelector('.embla__prev')
-  const nextButtonNode = rootNode.querySelector('.embla__next')
+  const prevButtonNode = rootNode.querySelector('.tabs__prev')
+  const nextButtonNode = rootNode.querySelector('.tabs__next')
 
   // Options.
   const options = { loop: false, align: 'start' }
