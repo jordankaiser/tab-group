@@ -50,6 +50,11 @@
   position: absolute;
   top: 0;
   z-index: 3;
+
+  &.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+  }
 }
 
 .tabs__next {

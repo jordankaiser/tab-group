@@ -145,7 +145,34 @@ window.addEventListener('load', function () {
   // Initialize the carousel
   const embla = EmblaCarousel(viewportNode, options)
 
+  embla.on('slidesInView', slidesChanged);
+
+  function slidesChanged(api) {
+    console.log('slidesInView');
+    if (!embla.canScrollPrev && !embla.canScrollNext) {
+      hidePrevNext(prevButtonNode, nextButtonNode, 'hidePrevNext');
+    } else if (!embla.canScrollNext) {
+      console.log('test');
+      hidePrevNext(prevButtonNode, nextButtonNode, 'hideNext');
+    }
+  }
+
   // Add click listeners
   prevButtonNode.addEventListener('click', embla.scrollPrev, false)
   nextButtonNode.addEventListener('click', embla.scrollNext, false)
 });
+
+function hidePrevNext(prev, next, action) {
+  switch (action) {
+    case 'hidePrevNext':
+      console.log(1);
+      prev.style.display = 'none';
+      next.style.display = 'none';
+      break;
+
+    case 'hideNext':
+      console.log(2);
+      next.style.display = 'none';
+      break;
+  }
+}
