@@ -678,8 +678,13 @@ window.addEventListener("load", function() {
     // Grab button nodes
     const prevButtonNode = rootNode.querySelector(".embla__prev");
     const nextButtonNode = rootNode.querySelector(".embla__next");
+    // Options.
+    const options = {
+        loop: false,
+        align: "start"
+    };
     // Initialize the carousel
-    const embla = (0, _emblaCarouselDefault.default)(viewportNode);
+    const embla = (0, _emblaCarouselDefault.default)(viewportNode, options);
     // Add click listeners
     prevButtonNode.addEventListener("click", embla.scrollPrev, false);
     nextButtonNode.addEventListener("click", embla.scrollNext, false);
