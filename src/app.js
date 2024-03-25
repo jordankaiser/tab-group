@@ -7,9 +7,11 @@
  *   Desc:   Tablist widget that implements ARIA Authoring Practices
  */
 
+import EmblaCarousel from 'embla-carousel'
+
 'use strict';
 
-class TabsAutomatic {
+class TabPanel {
   constructor(groupNode) {
     this.tablistNode = groupNode;
 
@@ -87,8 +89,8 @@ class TabsAutomatic {
   /* EVENT HANDLERS */
 
   onKeydown(event) {
-    var tgt = event.currentTarget,
-      flag = false;
+    var tgt = event.currentTarget;
+    const flag = false;
 
     switch (event.key) {
       case 'ArrowLeft':
@@ -129,8 +131,18 @@ class TabsAutomatic {
 // Initialize tablist
 
 window.addEventListener('load', function () {
-  var tablists = document.querySelectorAll('[role=tablist].automatic');
-  for (var i = 0; i < tablists.length; i++) {
-    new TabsAutomatic(tablists[i]);
-  }
+  // Grab wrapper nodes
+  const rootNode = document.querySelector('.embla')
+  const viewportNode = rootNode.querySelector('.embla__viewport')
+
+  // Grab button nodes
+  const prevButtonNode = rootNode.querySelector('.embla__prev')
+  const nextButtonNode = rootNode.querySelector('.embla__next')
+
+  // Initialize the carousel
+  const embla = EmblaCarousel(viewportNode)
+
+  // Add click listeners
+  prevButtonNode.addEventListener('click', embla.scrollPrev, false)
+  nextButtonNode.addEventListener('click', embla.scrollNext, false)
 });
