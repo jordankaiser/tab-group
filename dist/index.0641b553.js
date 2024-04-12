@@ -681,36 +681,15 @@ window.addEventListener("load", function() {
     // Options.
     const options = {
         loop: false,
-        align: "start"
+        align: "start",
+        inViewThreshold: 1
     };
     // Initialize the carousel
     const embla = (0, _emblaCarouselDefault.default)(viewportNode, options);
-    embla.on("slidesInView", slidesChanged);
-    function slidesChanged(api) {
-        console.log("slidesInView");
-        if (!embla.canScrollPrev && !embla.canScrollNext) hidePrevNext(prevButtonNode, nextButtonNode, "hidePrevNext");
-        else if (!embla.canScrollNext) {
-            console.log("test");
-            hidePrevNext(prevButtonNode, nextButtonNode, "hideNext");
-        }
-    }
     // Add click listeners
     prevButtonNode.addEventListener("click", embla.scrollPrev, false);
     nextButtonNode.addEventListener("click", embla.scrollNext, false);
 });
-function hidePrevNext(prev, next, action) {
-    switch(action){
-        case "hidePrevNext":
-            console.log(1);
-            prev.style.display = "none";
-            next.style.display = "none";
-            break;
-        case "hideNext":
-            console.log(2);
-            next.style.display = "none";
-            break;
-    }
-}
 
 },{"embla-carousel":"dnpYH","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dnpYH":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
